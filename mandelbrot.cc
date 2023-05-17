@@ -3,25 +3,65 @@
 #include <complex> // complex numbers
 #include <chrono> // clock
 #include <iomanip> // setw
+#include <cmath> // fmod
 
-#define WIDTH 4000
-#define HEIGHT 4000
-#define MAX_ITER 50
+#define WIDTH 4000 // image width
+#define HEIGHT 4000 // image height
+#define MAX_ITER 50 // max number of iterations
 
 struct Color {
   int r, g, b;
 };
 
-Color colors[5] = {
-    {  255,   0,   0},  // Red
-    {  0, 255,   0},  // Green
-    {  0,   0, 255},  // Blue
-    { 255, 255,   0},  // Yellow
-    { 255,   0, 255}   // Magenta
-};
+// Function to convert HSL to RGB
+Color hslToRgb(float h, float s, float l) {
+  float c = (1 - std::abs(2 * l - 1)) * s;
+  float x = c * (1 - std::abs(fmod(h / 60, 2) - 1));
+  float m = l - c / 2;
 
+  float r, g, b;
+  if (h < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (h < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (h < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (h < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (h < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else {
+    r = c;
+    g = 0;
+    b = x;
+  }
 
+  Color color;
+  color.r = static_cast<int>((r + m) * 255);
+  color.g = static_cast<int>((g + m) * 255);
+  color.b = static_cast<int>((b + m) * 255);
+  return color;
+}
 
+// Function to get the color of a pixel
+Color getColor(int iter) {
+  float hue = (360.0f * iter) / MAX_ITER;
+  float saturation = 1.0f;
+  float lightness = 0.5f;
+  return hslToRgb(hue, saturation, lightness);
+}
+
+// Function to compute the Mandelbrot sequence
 int value(int x, int y) {
   std::complex<float> point((float)x/WIDTH-1.5, (float)y/HEIGHT-0.5);
   std::complex<float> z(0, 0);
@@ -33,12 +73,8 @@ int value(int x, int y) {
   return nb_iter;
 }
 
-Color getColor(int iter) {
-  int index = (iter * 5) / MAX_ITER;
-  if (index >= 5) index = 4;
-  return colors[index];
-}
 
+// Main function
 int main() {
   std::ofstream my_Image("output.ppm");
 
