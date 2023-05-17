@@ -20,4 +20,5 @@ make
 # Convert the image
 echo "Program completed. Converting the PMM to TIFF."
 vips im_vips2tiff output.ppm output.tif
-echo "Conversion completed."
+rm output.ppm
+echo "Conversion completed. Please check the info.txt file for more information."

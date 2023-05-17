@@ -3,7 +3,6 @@
 #include <complex> // complex numbers
 #include <chrono> // clock
 #include <iomanip> // setw
-#include <cmath> // fmod
 
 #define WIDTH 4000 // image width
 #define HEIGHT 4000 // image height
@@ -75,15 +74,16 @@ int main() {
 
   my_Image << "P3\n" << WIDTH << " " << HEIGHT << " 255\n";
 
+  long totalDuration = 0;
   auto start = std::chrono::high_resolution_clock::now();
 
   for (int i = 0; i < WIDTH; i++) {
     if (i % 100 == 0) {
       auto now = std::chrono::high_resolution_clock::now();
       auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
+      totalDuration = duration;
 
       double processPercentage = 100.0 * i / WIDTH;
-
       // Spacing for the output
       int spacingValue = 30;
       if (processPercentage != static_cast<int>(processPercentage)) {
@@ -108,6 +108,16 @@ int main() {
 
   std::cout << "Processing: 100% done" << std::endl;
   my_Image.close();
+
+  // Write the info to a file
+  std::ofstream output("info.txt");
+  output << "Mandelbrot set" << std::endl;
+  output << "Width: " << WIDTH << std::endl;
+  output << "Height: " << HEIGHT << std::endl;
+  output << "Max iterations: " << MAX_ITER << std::endl;
+  output << "Palette size: " << PALETTE_SIZE << std::endl;
+  output << "Total duration: " << totalDuration << " seconds";
+  output.close();
 
   return 0;
 }  // main
