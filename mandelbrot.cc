@@ -8,57 +8,46 @@
 #define WIDTH 4000 // image width
 #define HEIGHT 4000 // image height
 #define MAX_ITER 50 // max number of iterations
+#define PALETTE_SIZE 16 // size of the color palette
 
+// Struct to store the RGB values
 struct Color {
   int r, g, b;
 };
 
-// Function to convert HSL to RGB
-Color hslToRgb(float h, float s, float l) {
-  float c = (1 - std::abs(2 * l - 1)) * s;
-  float x = c * (1 - std::abs(fmod(h / 60, 2) - 1));
-  float m = l - c / 2;
-
-  float r, g, b;
-  if (h < 60) {
-    r = c;
-    g = x;
-    b = 0;
-  } else if (h < 120) {
-    r = x;
-    g = c;
-    b = 0;
-  } else if (h < 180) {
-    r = 0;
-    g = c;
-    b = x;
-  } else if (h < 240) {
-    r = 0;
-    g = x;
-    b = c;
-  } else if (h < 300) {
-    r = x;
-    g = 0;
-    b = c;
-  } else {
-    r = c;
-    g = 0;
-    b = x;
-  }
-
+// Function to create a color from RGB values
+Color makeColor(int r, int g, int b) {
   Color color;
-  color.r = static_cast<int>((r + m) * 255);
-  color.g = static_cast<int>((g + m) * 255);
-  color.b = static_cast<int>((b + m) * 255);
+  color.r = r;
+  color.g = g;
+  color.b = b;
   return color;
 }
 
+// Color palette
+Color palette[PALETTE_SIZE] = {
+    makeColor(66, 30, 15),
+    makeColor(25, 7, 26),
+    makeColor(9, 1, 47),
+    makeColor(4, 4, 73),
+    makeColor(0, 7, 100),
+    makeColor(12, 44, 138),
+    makeColor(24, 82, 177),
+    makeColor(57, 125, 209),
+    makeColor(134, 181, 229),
+    makeColor(211, 236, 248),
+    makeColor(241, 233, 191),
+    makeColor(248, 201, 95),
+    makeColor(255, 170, 0),
+    makeColor(204, 128, 0),
+    makeColor(153, 87, 0),
+    makeColor(106, 52, 3)
+};
+
 // Function to get the color of a pixel
 Color getColor(int iter) {
-  float hue = (360.0f * iter) / MAX_ITER;
-  float saturation = 1.0f;
-  float lightness = 0.5f;
-  return hslToRgb(hue, saturation, lightness);
+  // Use the modulo operator to cycle through the palette
+  return palette[iter % PALETTE_SIZE];
 }
 
 // Function to compute the Mandelbrot sequence
@@ -72,6 +61,7 @@ int value(int x, int y) {
   }
   return nb_iter;
 }
+
 
 
 // Main function
