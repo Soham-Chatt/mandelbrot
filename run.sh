@@ -18,6 +18,6 @@ make
 ./mandelbrot
 
 # Convert the image
-echo "Program completed. Converting the image to png."
-convert output.ppm output.png
+echo "Program completed. Converting the PMM to TIFF."
+vips im_vips2tiff output.ppm output.tif
 echo "Conversion completed."
