@@ -56,7 +56,7 @@ dir_name="${latest_ppm%.ppm}"
 vips im_vips2tiff "$latest_ppm" "${dir_name}.tiff"
 
 # For a quick run, we need only the basic name
-if [ "$quick" -eq 2 ]
+if [ "$quick" -eq 1 ]
 then
   mv "${dir_name}.tiff" "output.tiff"
   mv "$latest_info" "info.txt"
