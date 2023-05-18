@@ -8,7 +8,7 @@
 
 #define WIDTH 2000
 #define HEIGHT 2000
-#define MAX_ITER 1500
+#define MAX_ITER 200
 #define Z_LIMIT 1000.0
 
 std::vector<int> histogram(WIDTH * HEIGHT, 0);

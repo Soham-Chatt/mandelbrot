@@ -48,7 +48,15 @@ echo "Program completed. Converting the PMM to TIFF."
 
 # Get the latest ppm file and convert it to tiff
 latest_ppm=$(find . -maxdepth 1 -name '*.ppm' -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
-vips im_vips2tiff "$latest_ppm" "${latest_ppm%.ppm}.tiff"
+latest_info=$(find . -maxdepth 1 -name '*.txt' -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
+
+# Create a variable for the directory name, stripping the .ppm extension from the file
+dir_name="${latest_ppm%.ppm}"
+
+vips im_vips2tiff "$latest_ppm" "${dir_name}.tiff"
+mkdir "$dir_name"
+mv "${dir_name}.tiff" "$dir_name"
 rm "$latest_ppm"
+mv "$latest_info" "$dir_name"
 
 echo "Conversion completed. Please check the info.txt file for more information."

@@ -21,3 +21,4 @@ debug2: $(TARGET2).cc
 clean:
 	rm -f $(TARGET1) $(TARGET1)_debug $(TARGET2) $(TARGET2)_debug
 	rm -f *.ppm *.png *.tiff *.txt
+	rm -rf buddhabrot_* mandelbrot_*
