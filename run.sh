@@ -61,6 +61,5 @@ mv "${dir_name}.tiff" "$dir_name"
 rm "$latest_ppm"
 mv "$latest_info" "$dir_name"
 
-./transfer.sh "$dir_name"
 
 echo "Conversion completed. Please check the info.txt file for more information."
