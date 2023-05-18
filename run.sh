@@ -25,9 +25,9 @@ elif [ "$choice" -eq 2 ]
 then
   echo "You selected Buddhabrot. Starting the program."
   ./buddhabrot
-  else
-    echo "Invalid input. Exiting the script."
-    exit 2
+else
+  echo "Invalid input. Exiting the script."
+  exit 2
 fi
 
 echo "Program completed. Converting the PMM to TIFF."
