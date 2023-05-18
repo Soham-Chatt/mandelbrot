@@ -75,13 +75,15 @@ int main() {
   my_Image << "P3\n" << WIDTH << " " << HEIGHT << " 255\n";
 
   long totalDuration = 0;
-  auto start = std::chrono::high_resolution_clock::now();
+  auto overallStart = std::chrono::high_resolution_clock::now();
+  auto start = overallStart;
 
   for (int i = 0; i < WIDTH; i++) {
+    // Print the progress every 100 pixels
     if (i % 100 == 0) {
       auto now = std::chrono::high_resolution_clock::now();
-      auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
-      totalDuration = duration;
+      auto durationSinceLastUpdate = std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
+      totalDuration = std::chrono::duration_cast<std::chrono::seconds>(now - overallStart).count();
 
       double processPercentage = 100.0 * i / WIDTH;
       // Spacing for the output
@@ -95,7 +97,11 @@ int main() {
       }
 
       std::cout << "Processing: " << processPercentage << "%" <<
-      std::setw(spacingValue) << "Running for " << duration << " seconds." << std::endl;
+      std::setw(spacingValue) << "Running for " << totalDuration << " seconds. " <<
+      "A total of " << durationSinceLastUpdate << " seconds elapsed since last update." << std::endl;
+
+      // Reset the start time for the next progress update
+      start = std::chrono::high_resolution_clock::now();
     }//if
 
     for (int j = 0; j < HEIGHT; j++)  {
@@ -105,6 +111,9 @@ int main() {
     }
 
   }//for i
+
+  auto final = std::chrono::high_resolution_clock::now();
+  totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - overallStart).count();
 
   std::cout << "Processing: 100% done" << std::endl;
   my_Image.close();
@@ -121,3 +130,4 @@ int main() {
 
   return 0;
 }  // main
+
