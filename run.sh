@@ -13,7 +13,7 @@ trap error_exit ERR
 
 # Build the program
 echo "Quick run? (y/n)"
-read -r save
+read -r quick
 if [ "$quick" = "y" ]
 then
   echo "You selected yes. Deleting all previous output files and building the program."
@@ -55,21 +55,17 @@ dir_name="${latest_ppm%.ppm}"
 
 vips im_vips2tiff "$latest_ppm" "${dir_name}.tiff"
 
-# For a quick run, we need only the basic name
-if [ "$quick" -eq 1 ]
+# For a quick run, we need only the basic name else create a new directory
+if [ "$quick" = "y" ]
 then
   mv "${dir_name}.tiff" "output.tiff"
   mv "$latest_info" "info.txt"
   rm "$latest_ppm"
-fi
-
-# Only move the files into a new directory if the user selected quick run
-if [ "$quick" -eq 2 ]
-then
-  mkdir "$dir_name"
-  mv "${dir_name}.tiff" "$dir_name"
-  rm "$latest_ppm"
-  mv "$latest_info" "$dir_name"
+  else
+    mkdir "$dir_name"
+      mv "${dir_name}.tiff" "$dir_name"
+      rm "$latest_ppm"
+      mv "$latest_info" "$dir_name"
 fi
 
 echo "Conversion completed. Please check the info.txt file for more information."
