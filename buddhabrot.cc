@@ -62,13 +62,14 @@ int main() {
   my_Image << "P3\n" << WIDTH << " " << HEIGHT << " 255\n";
 
   long totalDuration = 0;
-  auto start = std::chrono::high_resolution_clock::now();
+  auto overallStart = std::chrono::high_resolution_clock::now();
+  auto start = overallStart;
 
   for (int i = 0; i < WIDTH; i++) {
     if (i % 100 == 0) {
       auto now = std::chrono::high_resolution_clock::now();
       totalDuration = std::chrono::duration_cast<std::chrono::seconds>(
-          now - start).count();
+          now - overallStart).count();
 
       double processPercentage = 100.0 * i / WIDTH;
       int spacingValue = 30;
@@ -102,7 +103,7 @@ int main() {
   }
 
   auto final = std::chrono::high_resolution_clock::now();
-  totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - start).count();
+  totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - overallStart).count();
 
   std::cout << "Processing: 100% done" << std::endl;
   my_Image.close();
