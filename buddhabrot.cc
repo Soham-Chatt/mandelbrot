@@ -8,7 +8,7 @@
 
 #define WIDTH 2000
 #define HEIGHT 2000
-#define MAX_ITER 500
+#define MAX_ITER 1500
 #define Z_LIMIT 1000.0
 
 std::vector<int> histogram(WIDTH * HEIGHT, 0);
@@ -85,7 +85,7 @@ int main() {
       std::cout << "Processing: " << processPercentage << "%" <<
                 std::setw(spacingValue) << "Running for " << totalDuration
                 << " seconds. " <<
-                "A total of " << durationSinceLastUpdate
+                << durationSinceLastUpdate
                 << " seconds elapsed since last update." << std::endl;
 
       start = std::chrono::high_resolution_clock::now();
