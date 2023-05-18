@@ -37,8 +37,19 @@ void buddhabrot(std::complex<float> point) {
   }
 }
 
+std::string getTimestamp() {
+  std::time_t t = std::time(nullptr);
+  char buffer[20]; // Buffer to hold the timestamp string
+
+  // Format the time in the "YYYY-MM-DD_HH-MM-SS" format
+  std::strftime(buffer, sizeof(buffer), "%F_%H-%M-%S", std::localtime(&t));
+
+  return std::string(buffer);
+}
+
+
 int main() {
-  std::string buddhabrot_output = "buddhabrot_" + std::to_string(time(NULL)) + ".ppm";
+  std::string buddhabrot_output = "buddhabrot_" + getTimestamp() + ".ppm";
   std::ofstream my_Image(buddhabrot_output);
 
   if (!my_Image.is_open()) {
@@ -102,7 +113,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("infoBuddhabrot_" + std::to_string(time(NULL)) + ".txt");
+  std::ofstream output("infoBuddhabrot_" + getTimestamp() + ".txt");
   output << "Buddhabrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;

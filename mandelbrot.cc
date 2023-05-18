@@ -62,11 +62,20 @@ int value(int x, int y) {
   return nb_iter;
 }
 
+std::string getTimestamp() {
+  std::time_t t = std::time(nullptr);
+  char buffer[20]; // Buffer to hold the timestamp string
+
+  // Format the time in the "YYYY-MM-DD_HH-MM-SS" format
+  std::strftime(buffer, sizeof(buffer), "%F_%H-%M-%S", std::localtime(&t));
+
+  return std::string(buffer);
+}
 
 
 // Main function
 int main() {
-  std::string mandelbrot_output = "mandelbrot_" + std::to_string(time(NULL)) + ".ppm";
+  std::string mandelbrot_output = "mandelbrot_" + getTimestamp() + ".ppm";
   std::ofstream my_Image(mandelbrot_output);
 
   if (!my_Image.is_open()) {
@@ -121,7 +130,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("infoMandelbrot_" + std::to_string(time(NULL)) + ".txt");
+  std::ofstream output("infoMandelbrot_" + getTimestamp() + ".txt");
   output << "Mandelbrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;
