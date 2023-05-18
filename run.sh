@@ -12,14 +12,14 @@ function error_exit {
 trap error_exit ERR
 
 # Build the program
-echo "Use space-saving mode? (y/n)"
+echo "Quick run? (y/n)"
 read -r save
-if [ "$save" = "y" ]
+if [ "$quick" = "y" ]
 then
   echo "You selected yes. Deleting all previous output files and building the program."
   make clean
   make
-elif [ "$save" = "n" ]
+elif [ "$quick" = "n" ]
 then
   echo "You selected no. Building the program normally."
   make
@@ -55,8 +55,16 @@ dir_name="${latest_ppm%.ppm}"
 
 vips im_vips2tiff "$latest_ppm" "${dir_name}.tiff"
 
-# Only move the files into a new directory if the user selected no for space-saving mode
-if [ "$save" -eq 2 ]
+# For a quick run, we need only the basic name
+if [ "$quick" -eq 2 ]
+then
+  mv "${dir_name}.tiff" "output.tiff"
+  mv "$latest_info" "info.txt"
+  rm "$latest_ppm"
+fi
+
+# Only move the files into a new directory if the user selected quick run
+if [ "$quick" -eq 2 ]
 then
   mkdir "$dir_name"
   mv "${dir_name}.tiff" "$dir_name"
