@@ -68,8 +68,6 @@ int main() {
   for (int i = 0; i < WIDTH; i++) {
     if (i % 100 == 0) {
       auto now = std::chrono::high_resolution_clock::now();
-      auto durationSinceLastUpdate = std::chrono::duration_cast<std::chrono::seconds>(
-          now - start).count();
       totalDuration = std::chrono::duration_cast<std::chrono::seconds>(
           now - overallStart).count();
 
@@ -85,9 +83,7 @@ int main() {
 
       std::cout << "Processing: " << processPercentage << "%" <<
                 std::setw(spacingValue) << "Running for " << totalDuration
-                << " seconds. "
-                << durationSinceLastUpdate
-                << " seconds elapsed since last update." << std::endl;
+                << " seconds." << std::endl;
 
       start = std::chrono::high_resolution_clock::now();
     }
