@@ -1,3 +1,4 @@
+// mandelbrot.cc
 #include <iostream> // cout and endl
 #include <fstream> // file manipulation
 #include <complex> // complex numbers
@@ -65,7 +66,8 @@ int value(int x, int y) {
 
 // Main function
 int main() {
-  std::ofstream my_Image("output.ppm");
+  std::string mandelbrot_output = "mandelbrot_" + std::to_string(time(NULL)) + ".ppm";
+  std::ofstream my_Image(mandelbrot_output);
 
   if (!my_Image.is_open()) {
     std::cout << "Could not open file" << std::endl;
@@ -119,7 +121,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("info.txt");
+  std::ofstream output("infoMandelbrot_" + std::to_string(time(NULL)) + ".txt");
   output << "Mandelbrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;
