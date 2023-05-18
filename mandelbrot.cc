@@ -110,7 +110,7 @@ int main() {
 
       std::cout << "Processing: " << processPercentage << "%" <<
       std::setw(spacingValue) << "Running for " << totalDuration << " seconds. " <<
-      << durationSinceLastUpdate << " seconds elapsed since last update." << std::endl;
+      durationSinceLastUpdate << " seconds elapsed since last update." << std::endl;
 
       // Reset the start time for the next progress update
       start = std::chrono::high_resolution_clock::now();
