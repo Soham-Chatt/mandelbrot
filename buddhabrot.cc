@@ -84,8 +84,6 @@ int main() {
       std::cout << "Processing: " << processPercentage << "%" <<
                 std::setw(spacingValue) << "Running for " << totalDuration
                 << " seconds." << std::endl;
-
-      start = std::chrono::high_resolution_clock::now();
     }
 
     for (int j = 0; j < HEIGHT; j++) {
