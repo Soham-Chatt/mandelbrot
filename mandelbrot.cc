@@ -116,7 +116,7 @@ int main() {
   output << "Height: " << HEIGHT << std::endl;
   output << "Max iterations: " << MAX_ITER << std::endl;
   output << "Palette size: " << PALETTE_SIZE << std::endl;
-  output << "Total duration: " << totalDuration << " seconds";
+  output << "Total duration: " << totalDuration << " seconds" << std::endl;
   output.close();
 
   return 0;
