@@ -75,7 +75,8 @@ std::string getTimestamp() {
 
 // Main function
 int main() {
-  std::string mandelbrot_output = "mandelbrot_" + getTimestamp() + ".ppm";
+  std::string timestamp = getTimestamp();
+  std::string mandelbrot_output = "mandelbrot_" + timestamp + ".ppm";
   std::ofstream my_Image(mandelbrot_output);
 
   if (!my_Image.is_open()) {
@@ -130,7 +131,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("infoMandelbrot_" + getTimestamp() + ".txt");
+  std::ofstream output("infoMandelbrot_" + timestamp + ".txt");
   output << "Mandelbrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;

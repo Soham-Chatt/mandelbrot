@@ -49,7 +49,8 @@ std::string getTimestamp() {
 
 
 int main() {
-  std::string buddhabrot_output = "buddhabrot_" + getTimestamp() + ".ppm";
+  std::string timestamp = getTimestamp();
+  std::string buddhabrot_output = "buddhabrot_" + timestamp + ".ppm";
   std::ofstream my_Image(buddhabrot_output);
 
   if (!my_Image.is_open()) {
@@ -113,7 +114,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("infoBuddhabrot_" + getTimestamp() + ".txt");
+  std::ofstream output("infoBuddhabrot_" + timestamp + ".txt");
   output << "Buddhabrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;
