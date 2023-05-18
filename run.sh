@@ -12,7 +12,7 @@ function error_exit {
 trap error_exit ERR
 
 # Build the program
-echo "Are you generating a large file? (y/n)"
+echo "Use space-saving mode? (y/n)"
 read -r choice
 if [ "$choice" = "y" ]
 then
