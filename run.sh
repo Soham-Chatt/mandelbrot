@@ -12,7 +12,21 @@ function error_exit {
 trap error_exit ERR
 
 # Build the program
-make
+echo "Are you generating a large file? (y/n)"
+read -r choice
+if [ "$choice" = "y" ]
+then
+  echo "You selected yes. Deleting all previous output files and building the program."
+  make clean
+  make
+elif [ "$choice" = "n" ]
+then
+  echo "You selected no. Building the program normally."
+  make
+else
+  echo "Invalid input. Exiting the script."
+  exit 2
+fi
 
 # Select the type and run the program
 echo "Select the type: Mandelbrot (1) or Buddhabrot (2)"
