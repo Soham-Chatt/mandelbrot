@@ -84,7 +84,7 @@ int main() {
 
       std::cout << "Processing: " << processPercentage << "%" <<
                 std::setw(spacingValue) << "Running for " << totalDuration
-                << " seconds. " <<
+                << " seconds. "
                 << durationSinceLastUpdate
                 << " seconds elapsed since last update." << std::endl;
 
