@@ -6,7 +6,7 @@ base_dir="/home/soham/documents/github/mandelbrot_data/"
 
 # Check if directory name argument is provided
 if [ "$1" -eq 0 ]; then
-    echo "No directory name provided. Usage: ./script.sh <directory_name>"
+    echo "No directory name provided. Usage: ./transfer.sh <directory_name>"
     exit 1
 fi
 
