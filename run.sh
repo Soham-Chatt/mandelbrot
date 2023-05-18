@@ -13,13 +13,13 @@ trap error_exit ERR
 
 # Build the program
 echo "Use space-saving mode? (y/n)"
-read -r choice
-if [ "$choice" = "y" ]
+read -r save
+if [ "$save" = "y" ]
 then
   echo "You selected yes. Deleting all previous output files and building the program."
   make clean
   make
-elif [ "$choice" = "n" ]
+elif [ "$save" = "n" ]
 then
   echo "You selected no. Building the program normally."
   make
@@ -54,9 +54,14 @@ latest_info=$(find . -maxdepth 1 -name '*.txt' -printf '%T@ %p\n' | sort -n | ta
 dir_name="${latest_ppm%.ppm}"
 
 vips im_vips2tiff "$latest_ppm" "${dir_name}.tiff"
-mkdir "$dir_name"
-mv "${dir_name}.tiff" "$dir_name"
-rm "$latest_ppm"
-mv "$latest_info" "$dir_name"
+
+# Only move the files into a new directory if the user selected no for space-saving mode
+if [ "$save" -eq 2 ]
+then
+  mkdir "$dir_name"
+  mv "${dir_name}.tiff" "$dir_name"
+  rm "$latest_ppm"
+  mv "$latest_info" "$dir_name"
+fi
 
 echo "Conversion completed. Please check the info.txt file for more information."
