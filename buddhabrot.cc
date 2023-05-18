@@ -1,10 +1,11 @@
 // buddhabrot.cc
-#include <iostream>
-#include <fstream>
-#include <complex>
-#include <chrono>
-#include <iomanip>
-#include <vector>
+#include <iostream> // cout and endl
+#include <fstream> // file manipulation
+#include <complex>  // complex numbers
+#include <chrono> // clock
+#include <iomanip> // setw
+#include <vector> // vector
+#include "color.h" // color palette
 
 #define WIDTH 2000
 #define HEIGHT 2000
