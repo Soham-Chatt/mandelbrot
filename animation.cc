@@ -8,10 +8,10 @@
 #include "color.h" // color palette
 
 // Constants
-#define MAX_FRAMES 1000 // how many frames we will be generating
-#define HEIGHT 1000 // image height
-#define WIDTH 1000 // image width
-#define MAX_ITER 200 // max number of iterations
+#define MAX_FRAMES 500 // how many frames we will be generating
+#define HEIGHT 800 // image height
+#define WIDTH 800 // image width
+#define MAX_ITER 50 // max number of iterations
 
 // ffmpeg -framerate 60 -i mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
 
