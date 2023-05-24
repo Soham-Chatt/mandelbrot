@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 # Ask for the input file name
-file_name = input('Enter the file name: ')
+file_name =  'processing.txt'
 
 # Load your data
 with open(file_name, 'r') as f:
