@@ -16,4 +16,4 @@ $(TARGET2): $(TARGET2).cc
 clean:
 	rm -f $(TARGET1) $(TARGET2)
 	rm -f *.ppm *.png *.tiff *.txt
-	rm -rf buddhabrot_* mandelbrot_*
+	rm -rf mandelbrot_*
