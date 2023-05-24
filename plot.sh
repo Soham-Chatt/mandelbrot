@@ -12,5 +12,9 @@ function error_exit {
 trap error_exit ERR
 
 sed '1,2d' nohup.out > processing.txt
+
+source venv/bin/activate
 python3 plot.py
+deactivate
+
 rm processing.txt
