@@ -1,7 +1,6 @@
 #!/bin/bash
 
 pid=$(pidof mandelbrot)
-echo "Process ID: $pid"
 
 while :; do
     # Check if process is running
