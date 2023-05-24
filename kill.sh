@@ -1,4 +1,5 @@
 #!/bin/bash
+
 pid=$(pidof mandelbrot)
 
 while :; do
@@ -9,16 +10,13 @@ while :; do
     fi
 
     # Check if disk space is running low
-    df | awk '
-    if ($1 == "/dev/root" && $4 < 500000) {
-        echo "Too little disk space remaining. Killing the program.";
-        exit 1;
-    }'
+    low_space=$(df | awk '$1 == "/dev/root" && $4 < 500000 { print "low" }')
 
-    if [ $? -eq 1 ]; then
-        kill -9 "$pid";
+    if [ "$low_space" = "low" ]; then
+        echo "Too little disk space remaining. Killing the program."
+        kill -9 "$pid"
         echo "Script successfully exited"
-        exit 0;
+        exit 0
     fi
 
     sleep 1m;
