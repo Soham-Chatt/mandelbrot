@@ -8,26 +8,36 @@
 #include "color.h" // color palette
 
 // Constants
-#define MAX_FRAMES 500 // how many frames we will be generating
-#define HEIGHT 800 // image height
-#define WIDTH 800 // image width
-#define MAX_ITER 50 // max number of iterations
+#define MAX_FRAMES 1800 // how many frames we will be generating
+#define HEIGHT 1080 // image height
+#define WIDTH 1920 // image width
+#define MAX_ITER 200 // max number of iterations
 
 // ffmpeg -framerate 60 -i mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
 
-
 // The zoom function which will decrease the range with each frame
 void zoom(double &x1, double &x2, double &y1, double &y2) {
-  // zoom towards the center of the range
-  double xmid = 0.5*(x1 + x2);
-  double ymid = 0.5*(y1 + y2);
+  //    The Seahorse Valley: (-0.75, 0)
+  //    The Elephant Valley: (-0.75, -0.1)
+  //    The Double Scepter Valley:(-1.36, 0)
+  //    The Mini Mandelbrot: (-1.75, 0)
+  //    The Triple Spiral Area: (-0.088, 0.654)
 
-  // shrink the range
-  x1 = 0.5*(x1 + xmid);
-  x2 = 0.5*(x2 + xmid);
-  y1 = 0.5*(y1 + ymid);
-  y2 = 0.5*(y2 + ymid);
+  // Set the focus point to the Triple Spiral Area
+  double focus_x = -0.088;
+  double focus_y = 0.654;
+
+  // Calculate the distances in x and y directions
+  double dx = x2 - x1;
+  double dy = y2 - y1;
+
+  // Calculate the new ranges
+  x1 = focus_x - dx / 4;
+  x2 = focus_x + dx / 4;
+  y1 = focus_y - dy / 4;
+  y2 = focus_y + dy / 4;
 }
+
 
 int value(int x, int y, double x1, double y1, double x2, double y2) {
   std::complex<float> point((float)(x*(x2-x1)/WIDTH+x1), (float)(y*(y2-y1)/HEIGHT+y1));
