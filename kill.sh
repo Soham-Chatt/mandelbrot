@@ -1,9 +1,9 @@
 #!/bin/bash
-pid=11330
+pid=$(pidof mandelbrot)
 
 while :; do
     # Check if process is running
-    if ! ps -p $pid > /dev/null; then
+    if ! ps -p "$pid" > /dev/null; then
         echo "Process $pid no longer exists. Exiting script."
         exit 1
     fi
@@ -16,7 +16,7 @@ while :; do
     }'
 
     if [ $? -eq 1 ]; then
-        kill -9 $pid;
+        kill -9 "$pid";
         echo "Script successfully exited"
         exit 0;
     fi
