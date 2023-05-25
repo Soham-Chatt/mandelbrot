@@ -7,9 +7,9 @@
 #include "color.h" // color palette
 
 // Constants
-constexpr int WIDTH = 5000; // image width
-constexpr int HEIGHT = 5000; // image height
-constexpr int MAX_ITER = 1000; // max number of iterations
+constexpr int WIDTH = 1000; // image width
+constexpr int HEIGHT = 1000; // image height
+constexpr int MAX_ITER = 20; // max number of iterations
 constexpr char DELIMITER = '\t';
 
 // Function to compute the Mandelbrot sequence
@@ -80,7 +80,7 @@ int main() {
   my_Image.close();
 
   // Write the info to a file
-  std::ofstream output("infoMandelbrot_" + timestamp + ".txt");
+  std::ofstream output("info_" + timestamp + ".txt");
   output << "Mandelbrot set" << std::endl;
   output << "Width: " << WIDTH << std::endl;
   output << "Height: " << HEIGHT << std::endl;

@@ -7,7 +7,7 @@ while :; do
     newest_dir=$(find . -type d -name "mandelbrot_*" -print0 | xargs -0 ls -td | head -n 1)
 
     # Find the infoMandelbrot_*.txt file in the newest directory
-    info_file=$(find "${newest_dir}" -type f -name "infoMandelbrot_*.txt" -print0 | xargs -0 ls -t | head -n 1)
+    info_file=$(find "${newest_dir}" -type f -name "info_*.txt" -print0 | xargs -0 ls -t | head -n 1)
 
     width=$(grep 'Width' "${info_file}" | awk '{print $2}')
     height=$(grep 'Height' "${info_file}" | awk '{print $2}')
