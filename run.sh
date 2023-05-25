@@ -39,7 +39,7 @@ mv "$latest_info" "$dir_name"
 # Check if nohup.txt exists and create the processing info file
 if [ -f "nohup.out" ]; then
     timestamp="${dir_name##*mandelbrot_}"
-    awk '/Processing/,0' nohup.out | head -n -1 > "${dir_name}/processingInfo_${timestamp}.txt"
+    awk '/0/,0' nohup.out | head -n -1 > "${dir_name}/processingInfo_${timestamp}.txt"
     rm nohup.out
 fi
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Create the stripped down file
 echo "Stripping down the file"
-awk '/Processing/,0' nohup.out > processing.txt
+awk '/0/,0' nohup.out > processing.txt
 
 # Run the script
 echo "Running the script"
