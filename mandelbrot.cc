@@ -7,9 +7,9 @@
 #include "color.h" // color palette
 
 // Constants
-constexpr int WIDTH = 2000; // image width
-constexpr int HEIGHT = 2000; // image height
-constexpr int MAX_ITER = 800; // max number of iterations
+constexpr int WIDTH = 3000; // image width
+constexpr int HEIGHT = 3000; // image height
+constexpr int MAX_ITER = 500; // max number of iterations
 constexpr char DELIMITER = '\t';
 
 // Function to compute the Mandelbrot sequence
