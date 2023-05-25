@@ -20,6 +20,7 @@ int value(int x, int y) {
     z = z * z + point;
     nb_iter++;
   }
+
   return nb_iter;
 }
 
