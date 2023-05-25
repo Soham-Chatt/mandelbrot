@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 # Load the data
-data = pd.read_csv('your_data.csv')
+data = pd.read_csv('data.csv')
 
 # Specify input features and target variable
 features = ['Width', 'Height', 'Max_iterations', 'Palette_size', 'PPM_filesize', 'TIFF_filesize']
