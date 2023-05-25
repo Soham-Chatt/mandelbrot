@@ -21,6 +21,6 @@ do
     # Write values to CSV
     echo "$width,$height,$max_iterations,$palette_size,$ppm_filesize,$tiff_filesize,$total_duration" >> data.csv
 
-    rm "$newest_dir"
+    rm -r "$newest_dir"
     i=$((i+1))
 done

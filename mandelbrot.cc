@@ -7,8 +7,8 @@
 #include "color.h" // color palette
 
 // Constants
-constexpr int WIDTH = 3000; // image width
-constexpr int HEIGHT = 3000; // image height
+constexpr int WIDTH = 4000; // image width
+constexpr int HEIGHT = 4000; // image height
 constexpr int MAX_ITER = 500; // max number of iterations
 constexpr char DELIMITER = '\t';
 
