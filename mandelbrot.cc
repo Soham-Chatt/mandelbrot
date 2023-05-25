@@ -10,7 +10,7 @@
 constexpr int WIDTH = 1000; // image width
 constexpr int HEIGHT = 1000; // image height
 constexpr int MAX_ITER = 20; // max number of iterations
-constexpr char DELIMITER = '\t';
+constexpr char DELIMITER = ','; // delimiter for the output
 
 // Function to compute the Mandelbrot sequence
 int value(int x, int y) {
