@@ -10,6 +10,7 @@
 constexpr int WIDTH = 2000; // image width
 constexpr int HEIGHT = 2000; // image height
 constexpr int MAX_ITER = 800; // max number of iterations
+constexpr char DELIMITER = '\t';
 
 // Function to compute the Mandelbrot sequence
 int value(int x, int y) {
@@ -34,19 +35,6 @@ std::string getTimestamp() {
   return buffer;
 }
 
-int determineSpacingValue(double processPercentage) {
-  int spacingValue = 30;
-
-  if (processPercentage != static_cast<int>(processPercentage)) {
-    spacingValue -= 2;
-  }
-
-  if (processPercentage >= 10) {
-    spacingValue -= 1;
-  }
-
-  return spacingValue;
-}
 
 // Main function
 int main() {
@@ -71,11 +59,8 @@ int main() {
           now - overallStart).count();
 
       double processPercentage = 100.0 * i / WIDTH;
-      int spacingValue = determineSpacingValue(processPercentage);
 
-      std::cout << "Processing: " << processPercentage << "%" <<
-                std::setw(spacingValue) << "Running for " << totalDuration
-                << " seconds." << std::endl;
+      std::cout << processPercentage << DELIMITER <<  totalDuration << std::endl;
     }
 
     for (int j = 0; j < HEIGHT; j++)  {
@@ -89,8 +74,8 @@ int main() {
   auto final = std::chrono::high_resolution_clock::now();
   totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - overallStart).count();
 
-  std::cout << "Processing: 100%" << std::setw(determineSpacingValue(100)-1)
-  << "Running for " << totalDuration << " seconds." << std::endl;
+  std::cout << "100" << DELIMITER <<  totalDuration << std::endl;
+
 
   my_Image.close();
 

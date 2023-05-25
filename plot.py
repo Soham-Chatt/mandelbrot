@@ -15,10 +15,9 @@ data = {
 }
 
 for line in lines:
-    processing, time = line.strip().split('Running for')
-    processing = processing.replace('Processing:', '').replace('%', '').strip()
-    time = time.replace('seconds.', '').strip()
-
+    current_line = line.split('\t')
+    processing = current_line[0]
+    time = current_line[1]
     data['Processing'].append(float(processing))
     data['Time'].append(int(time))
 
