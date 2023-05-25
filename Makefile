@@ -9,7 +9,6 @@ all: $(TARGET1) $(TARGET2) $(TARGET3)
 $(TARGET1): $(TARGET1).cc
 	$(CXX) $(CXXFLAGS) -o $(TARGET1) $(TARGET1).cc
 
-
 $(TARGET2): $(TARGET2).cc
 	$(CXX) $(CXXFLAGS) -o $(TARGET2) $(TARGET2).cc
 
