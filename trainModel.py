@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error
 data = pd.read_csv('data.csv')
 
 # Specify input features and target variable
-features = ['Width', 'Height', 'Max_iterations', 'Palette_size', 'PPM_filesize', 'TIFF_filesize']
+features = ['Width', 'Height', 'Max_iterations', 'Palette_size']
 target = 'Time'
 
 # Split the data into train and test sets
@@ -23,3 +23,12 @@ predictions = model.predict(X_test)
 # Evaluate the model
 mse = mean_squared_error(y_test, predictions)
 print('Mean Squared Error:', mse)
+
+new_width = input('Enter width: ')
+new_height = input('Enter height: ')
+new_max_iterations = input('Enter max iterations: ')
+new_palette_size = input('Enter palette size: ')
+
+new_set = pd.DataFrame([[new_width, new_height, new_max_iterations, new_palette_size]], columns=features) # adjust these values based on your new set
+predicted_time = model.predict(new_set)
+print('Predicted Time:', predicted_time[0])
