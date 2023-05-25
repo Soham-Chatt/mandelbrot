@@ -2,7 +2,8 @@
 #ifndef MANDELBROTCPP_COLOR_H
 #define MANDELBROTCPP_COLOR_H
 
-#define PALETTE_SIZE 16 // size of the color palette
+// Constants
+constexpr int PALETTE_SIZE = 16; // size of the color palette
 
 // Struct to store the RGB values
 struct Color {

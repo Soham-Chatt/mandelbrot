@@ -7,12 +7,10 @@
 #include "color.h" // color palette
 
 // Constants
-#define MAX_FRAMES 1800 // how many frames we will be generating
-#define HEIGHT 1080 // image height
-#define WIDTH 1920 // image width
-#define MAX_ITER 200 // max number of iterations
-
-// ffmpeg -framerate 60 -i mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
+constexpr int MAX_FRAMES = 1800; // how many frames we will be generating
+constexpr int WIDTH = 2000; // image width
+constexpr int HEIGHT = 2000; // image height
+constexpr int MAX_ITER = 800; // max number of iterations
 
 // The zoom function which will decrease the range with each frame
 void zoom(double &x1, double &x2, double &y1, double &y2) {
