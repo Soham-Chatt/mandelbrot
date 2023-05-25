@@ -2,7 +2,6 @@
 #include <iostream> // cout and endl
 #include <fstream> // file manipulation
 #include <complex> // complex numbers
-#include <chrono> // clock
 #include <iomanip> // setw
 #include <sys/stat.h> // mkdir
 #include "color.h" // color palette
@@ -42,7 +41,7 @@ void zoom(double &x1, double &x2, double &y1, double &y2) {
 int value(int x, int y, double x1, double y1, double x2, double y2) {
   std::complex<float> point((float)(x*(x2-x1)/WIDTH+x1), (float)(y*(y2-y1)/HEIGHT+y1));
   std::complex<float> z(0, 0);
-  unsigned int nb_iter = 0;
+  int nb_iter = 0;
   while (abs (z) < 2 && nb_iter <= MAX_ITER) {
     z = z * z + point;
     nb_iter++;
