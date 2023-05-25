@@ -44,6 +44,7 @@ int value(int x, int y, double x1, double y1, double x2, double y2) {
     z = z * z + point;
     nb_iter++;
   }
+
   return nb_iter;
 }
 
