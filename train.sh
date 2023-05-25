@@ -14,11 +14,9 @@ while :; do
     max_iterations=$(grep 'Max iterations' "${info_file}" | awk '{print $3}')
     palette_size=$(grep 'Palette size' "${info_file}" | awk '{print $3}')
     total_duration=$(grep 'Total duration' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
-    ppm_filesize=$(grep 'PPM filesize' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
-    tiff_filesize=$(grep 'TIFF filesize' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
 
-    # Write values to CSV
-    echo "$width,$height,$max_iterations,$palette_size,$ppm_filesize,$tiff_filesize,$total_duration" >> data.csv
+    # Write values to CSV file
+    echo "$width,$height,$max_iterations,$palette_size,$total_duration" >> data.csv
     rm -r "$newest_dir"
 
 done
