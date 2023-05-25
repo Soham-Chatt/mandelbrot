@@ -32,6 +32,19 @@ std::string getTimestamp() {
   return std::string(buffer);
 }
 
+int determineSpacingValue(double processPercentage) {
+  int spacingValue = 30;
+
+  if (processPercentage != static_cast<int>(processPercentage)) {
+    spacingValue -= 2;
+  }
+
+  if (processPercentage >= 10) {
+    spacingValue -= 1;
+  }
+
+  return spacingValue;
+}
 
 // Main function
 int main() {
@@ -46,9 +59,8 @@ int main() {
 
   my_Image << "P3\n" << WIDTH << " " << HEIGHT << " 255\n";
 
-  long totalDuration = 0;
+  long totalDuration;
   auto overallStart = std::chrono::high_resolution_clock::now();
-  auto start = overallStart;
 
   for (int i = 0; i < WIDTH; i++) {
     if (i % 100 == 0) {
@@ -57,14 +69,7 @@ int main() {
           now - overallStart).count();
 
       double processPercentage = 100.0 * i / WIDTH;
-      int spacingValue = 30;
-      if (processPercentage != static_cast<int>(processPercentage)) {
-        spacingValue -= 2;
-      }
-
-      if (processPercentage >= 10) {
-        spacingValue -= 1;
-      }
+      int spacingValue = determineSpacingValue(processPercentage);
 
       std::cout << "Processing: " << processPercentage << "%" <<
                 std::setw(spacingValue) << "Running for " << totalDuration
@@ -82,7 +87,9 @@ int main() {
   auto final = std::chrono::high_resolution_clock::now();
   totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - overallStart).count();
 
-  std::cout << "Processing: 100% done" << std::endl;
+  std::cout << "Processing: 100%" << std::setw(determineSpacingValue(100)-1)
+  << "Running for " << totalDuration << " seconds." << std::endl;
+
   my_Image.close();
 
   // Write the info to a file
