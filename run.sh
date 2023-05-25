@@ -10,7 +10,7 @@ function error_exit {
 
 # Run the program
 echo "Starting the program."
-make
+make mandelbrot
 ./mandelbrot
 echo "Program completed. Converting the PMM to TIFF."
 
