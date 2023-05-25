@@ -12,9 +12,9 @@
 
 // Function to compute the Mandelbrot sequence
 int value(int x, int y) {
-  std::complex<float> point((float)x/WIDTH-1.5, (float)y/HEIGHT-0.5);
+  std::complex<float> point((float)x/WIDTH-1.5f, (float)y/HEIGHT-0.5f);
   std::complex<float> z(0, 0);
-  unsigned int nb_iter = 0;
+  int nb_iter = 0;
   while (abs (z) < 2 && nb_iter <= MAX_ITER) {
     z = z * z + point;
     nb_iter++;
@@ -29,7 +29,7 @@ std::string getTimestamp() {
   // Format the time in the "YYYY-MM-DD_HH-MM-SS" format
   std::strftime(buffer, sizeof(buffer), "%F_%H-%M-%S", std::localtime(&t));
 
-  return std::string(buffer);
+  return buffer;
 }
 
 int determineSpacingValue(double processPercentage) {
