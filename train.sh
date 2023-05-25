@@ -1,7 +1,6 @@
 #!/bin/bash
 
 while :; do
-    echo "Starting run $i"
     nohup ./run.sh
 
     # Get the newest directory with the name 'mandelbrot_*'
@@ -17,6 +16,7 @@ while :; do
     total_duration=$(grep 'Total duration' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
     ppm_filesize=$(grep 'PPM filesize' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
     tiff_filesize=$(grep 'TIFF filesize' "${info_file}" | awk '{print $3}' | sed 's/[^0-9]*//g')
+
     # Write values to CSV
     echo "$width,$height,$max_iterations,$palette_size,$ppm_filesize,$tiff_filesize,$total_duration" >> data.csv
     rm -r "$newest_dir"
