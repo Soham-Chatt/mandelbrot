@@ -3,7 +3,6 @@
 #include <fstream> // file manipulation
 #include <complex> // complex numbers
 #include <chrono> // clock
-#include <iomanip> // setw
 #include "color.h" // color palette
 
 // Constants
