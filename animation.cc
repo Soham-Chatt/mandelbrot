@@ -1,5 +1,6 @@
 // animation.cc
 #include <iostream> // cout and endl
+#include <string> // string manipulation
 #include <fstream> // file manipulation
 #include <complex> // complex numbers
 #include <iomanip> // setw

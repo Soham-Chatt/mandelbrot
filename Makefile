@@ -4,7 +4,7 @@ DEBUGFLAGS = -g -O0
 TARGET1 = mandelbrot
 TARGET2 = animation
 
-all: $(TARGET1) $(TARGET2) $(TARGET3)
+all: $(TARGET1) $(TARGET2)
 
 $(TARGET1): $(TARGET1).cc
 	$(CXX) $(CXXFLAGS) -o $(TARGET1) $(TARGET1).cc
