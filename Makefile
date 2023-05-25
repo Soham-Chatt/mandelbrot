@@ -1,6 +1,5 @@
 CXX = g++
 CXXFLAGS = -O3
-DEBUGFLAGS = -g -O0
 TARGET1 = mandelbrot
 TARGET2 = animation
 
