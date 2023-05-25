@@ -25,7 +25,7 @@ int value(int x, int y) {
 
 std::string getTimestamp() {
   std::time_t t = std::time(nullptr);
-  char buffer[20]; // Buffer to hold the timestamp string
+  char buffer[20];
 
   // Format the time in the "YYYY-MM-DD_HH-MM-SS" format
   std::strftime(buffer, sizeof(buffer), "%F_%H-%M-%S", std::localtime(&t));
