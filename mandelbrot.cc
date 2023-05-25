@@ -6,9 +6,9 @@
 #include <iomanip> // setw
 #include "color.h" // color palette
 
-#define WIDTH 4000 // image width
-#define HEIGHT 4000 // image height
-#define MAX_ITER 50 // max number of iterations
+#define WIDTH 2000 // image width
+#define HEIGHT 2000 // image height
+#define MAX_ITER 800 // max number of iterations
 
 // Function to compute the Mandelbrot sequence
 int value(int x, int y) {

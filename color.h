@@ -11,10 +11,7 @@ struct Color {
 
 // Function to create a color from RGB values
 Color makeColor(int r, int g, int b) {
-  Color color;
-  color.r = r;
-  color.g = g;
-  color.b = b;
+  Color color {r, g, b};
   return color;
 }
 
