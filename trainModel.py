@@ -31,4 +31,4 @@ new_palette_size = input('Enter palette size: ')
 
 new_set = pd.DataFrame([[new_width, new_height, new_max_iterations, new_palette_size]], columns=features) # adjust these values based on your new set
 predicted_time = model.predict(new_set)
-print('Predicted Time:', predicted_time[0])
+print('Predicted Time:', round(predicted_time[0]))
