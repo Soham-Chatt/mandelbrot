@@ -29,6 +29,6 @@ new_height = input('Enter height: ')
 new_max_iterations = input('Enter max iterations: ')
 new_palette_size = input('Enter palette size: ')
 
-new_set = pd.DataFrame([[new_width, new_height, new_max_iterations, new_palette_size]], columns=features) # adjust these values based on your new set
+new_set = pd.DataFrame([[new_width, new_height, new_max_iterations, new_palette_size]], columns=features)
 predicted_time = model.predict(new_set)
 print('Predicted Time:', round(predicted_time[0]))
