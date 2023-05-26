@@ -10,7 +10,7 @@
 constexpr int WIDTH = 1000; // image width
 constexpr int HEIGHT = 1000; // image height
 constexpr int MAX_ITER = 20; // max number of iterations
-constexpr char DELIMITER = ','; // delimiter for the output
+constexpr char DELIMITER = '\t'; // delimiter for the output
 
 // Function to compute the Mandelbrot sequence
 int value(int x, int y) {
@@ -25,6 +25,7 @@ int value(int x, int y) {
   return nb_iter;
 }
 
+// Function to get the current time in the format YYYY-MM-DD_HH-MM-SS
 std::string getTimestamp() {
   std::time_t t = std::time(nullptr);
   char buffer[20];
@@ -35,6 +36,16 @@ std::string getTimestamp() {
   return buffer;
 }
 
+// Function to get the current time in the format HH:MM:SS DD/MM/YYYY and return a std::string
+std::string getTime() {
+  std::time_t t = std::time(nullptr);
+  char buffer[20];
+
+  // Format the time in the "HH:MM:SS DD:MM" format
+  std::strftime(buffer, sizeof(buffer), "%T \t %D", std::localtime(&t));
+
+  return buffer;
+}
 
 // Main function
 int main() {
@@ -59,8 +70,7 @@ int main() {
           now - overallStart).count();
 
       double processPercentage = 100.0 * i / WIDTH;
-
-      std::cout << processPercentage << DELIMITER <<  totalDuration << std::endl;
+      std::cout << processPercentage << DELIMITER <<  totalDuration << DELIMITER << getTime() << std::endl;
     }
 
     for (int j = 0; j < HEIGHT; j++)  {
@@ -74,7 +84,7 @@ int main() {
   auto final = std::chrono::high_resolution_clock::now();
   totalDuration = std::chrono::duration_cast<std::chrono::seconds>(final - overallStart).count();
 
-  std::cout << "100" << DELIMITER <<  totalDuration << std::endl;
+  std::cout << "100" << DELIMITER <<  totalDuration << DELIMITER << getTime() << std::endl;
 
 
   my_Image.close();
