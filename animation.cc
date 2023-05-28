@@ -8,9 +8,9 @@
 #include "color.h" // color palette
 
 // Constants
-constexpr int MAX_FRAMES = 1800; // how many frames we will be generating
-constexpr int WIDTH = 2000; // image width
-constexpr int HEIGHT = 2000; // image height
+constexpr int MAX_FRAMES = 20; // how many frames we will be generating
+constexpr int WIDTH = 800; // image width
+constexpr int HEIGHT = 800; // image height
 constexpr int MAX_ITER = 800; // max number of iterations
 
 // The zoom function which will decrease the range with each frame
@@ -22,18 +22,19 @@ void zoom(double &x1, double &x2, double &y1, double &y2) {
   //    The Triple Spiral Area: (-0.088, 0.654)
 
   // Set the focus point to the Triple Spiral Area
-  double focus_x = -0.088;
-  double focus_y = 0.654;
+  double focus_x = -0.75;
+  double focus_y = 0.1;
 
   // Calculate the distances in x and y directions
   double dx = x2 - x1;
   double dy = y2 - y1;
 
   // Calculate the new ranges
-  x1 = focus_x - dx / 4;
-  x2 = focus_x + dx / 4;
-  y1 = focus_y - dy / 4;
-  y2 = focus_y + dy / 4;
+  double zoom_factor = 4;
+  x1 = focus_x - dx / zoom_factor;
+  x2 = focus_x + dx / zoom_factor;
+  y1 = focus_y - dy / zoom_factor;
+  y2 = focus_y + dy / zoom_factor;
 }
 
 
