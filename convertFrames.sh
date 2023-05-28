@@ -8,5 +8,5 @@ function error_exit {
     exit 1
 }
 
-ffmpeg -framerate 60 -i frames/mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
+ffmpeg -framerate 24 -i frames/mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
 rm -r frames

@@ -8,10 +8,10 @@
 #include "color.h" // color palette
 
 // Constants
-constexpr int MAX_FRAMES = 20; // how many frames we will be generating
+constexpr int MAX_FRAMES = 10; // how many frames we will be generating
 constexpr int WIDTH = 800; // image width
 constexpr int HEIGHT = 800; // image height
-constexpr int MAX_ITER = 800; // max number of iterations
+constexpr int MAX_ITER = 2000; // max number of iterations
 
 // The zoom function which will decrease the range with each frame
 void zoom(double &x1, double &x2, double &y1, double &y2) {
@@ -19,21 +19,20 @@ void zoom(double &x1, double &x2, double &y1, double &y2) {
   //    The Elephant Valley: (0.1, 0.1)
 
   // Set the focus point to correct area (x, y * i)
-  double focus_x = -0.75;
-  double focus_y = 0.1;
+  double focus_x = -0.7746806106269039;
+  double focus_y = -0.1374168856037867;
 
   // Calculate the distances in x and y directions
-  double dx = x2 - x1;
-  double dy = y2 - y1;
+  double dx = std::abs(x1 - focus_x);
+  double dy = std::abs(y1 - focus_y);
 
   // Calculate the new ranges
-  double zoom_factor = 4;
+  double zoom_factor = 8;
   x1 = focus_x - dx / zoom_factor;
   x2 = focus_x + dx / zoom_factor;
   y1 = focus_y - dy / zoom_factor;
   y2 = focus_y + dy / zoom_factor;
 }
-
 
 int value(int x, int y, double x1, double y1, double x2, double y2) {
   std::complex<float> point((float)(x*(x2-x1)/WIDTH+x1), (float)(y*(y2-y1)/HEIGHT+y1));
