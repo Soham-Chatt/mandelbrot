@@ -8,5 +8,11 @@ function error_exit {
     exit 1
 }
 
+echo "Starting the program."
+make animation
+./animation
+echo "Program completed. Converting the PMMs to an mp4."
+
 ffmpeg -framerate 24 -i frames/mandelbrot_%04d.ppm -c:v libx264 -pix_fmt yuv420p out.mp4
 rm -r frames
+echo "Conversion completed."

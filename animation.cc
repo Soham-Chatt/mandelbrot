@@ -9,9 +9,9 @@
 
 // Constants
 constexpr int MAX_FRAMES = 10; // how many frames we will be generating
-constexpr int WIDTH = 800; // image width
-constexpr int HEIGHT = 800; // image height
-constexpr int MAX_ITER = 2000; // max number of iterations
+constexpr int WIDTH = 1600; // image width
+constexpr int HEIGHT = 1600; // image height
+constexpr int MAX_ITER = 600; // max number of iterations
 
 // The zoom function which will decrease the range with each frame
 void zoom(double &x1, double &x2, double &y1, double &y2) {
@@ -35,8 +35,8 @@ void zoom(double &x1, double &x2, double &y1, double &y2) {
 }
 
 int value(int x, int y, double x1, double y1, double x2, double y2) {
-  std::complex<float> point((float)(x*(x2-x1)/WIDTH+x1), (float)(y*(y2-y1)/HEIGHT+y1));
-  std::complex<float> z(0, 0);
+  std::complex<double> point((double)(x*(x2-x1)/WIDTH+x1), (double)(y*(y2-y1)/HEIGHT+y1));
+  std::complex<double> z(0, 0);
   int nb_iter = 0;
   while (abs (z) < 2 && nb_iter <= MAX_ITER) {
     z = z * z + point;
