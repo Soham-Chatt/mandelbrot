@@ -21,9 +21,9 @@ void zoom(double &x1, double &x2, double &y1, double &y2) {
   //    The Mini Mandelbrot: (-1.75, 0)
   //    The Triple Spiral Area: (-0.088, 0.654)
 
-  // Set the focus point to the Triple Spiral Area
+  // Set the focus point to correct area (x, y)
   double focus_x = -0.75;
-  double focus_y = 0.1;
+  double focus_y = -0.1;
 
   // Calculate the distances in x and y directions
   double dx = x2 - x1;
