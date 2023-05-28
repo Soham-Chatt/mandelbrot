@@ -15,15 +15,12 @@ constexpr int MAX_ITER = 800; // max number of iterations
 
 // The zoom function which will decrease the range with each frame
 void zoom(double &x1, double &x2, double &y1, double &y2) {
-  //    The Seahorse Valley: (-0.75, 0)
-  //    The Elephant Valley: (-0.75, -0.1)
-  //    The Double Scepter Valley:(-1.36, 0)
-  //    The Mini Mandelbrot: (-1.75, 0)
-  //    The Triple Spiral Area: (-0.088, 0.654)
+  //    The Seahorse Valley: (-0.75, 0.1)
+  //    The Elephant Valley: (0.1, 0.1)
 
-  // Set the focus point to correct area (x, y)
+  // Set the focus point to correct area (x, y * i)
   double focus_x = -0.75;
-  double focus_y = -0.1;
+  double focus_y = 0.1;
 
   // Calculate the distances in x and y directions
   double dx = x2 - x1;
